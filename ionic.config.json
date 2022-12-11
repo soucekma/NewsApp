@@ -1,0 +1,7 @@
+{
+  "name": "LyricApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
