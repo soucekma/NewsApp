@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Top Articles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-searchbar class = "ion-padding"
+                 placeholder="Search"
+                 [(ngModel)]="searchValue"
+                 (ngModelChange)="searchTo(searchValue)"
+                 show-cancel-button="focus"
+                 animated = "true">
+
+  </ion-searchbar>
+
+
+  <ion-list size ="8">
+    <ion-row class="ion-no-margin">
+      <ion-segment value="us">
+        <ion-segment-button value="us" (click)="changeTo('us')">
+          <ion-label>US</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="cz" (click)="changeTo('cz')">
+          <ion-label>CZ</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+    <ion-row *ngFor="let article of topHeadlines"
+    style="background-color: #d3d3d3; border-radius: 5px" class="ion-margin">
+
+      <ion-col size="4">
+        <a href="{{article.url}}"><img src="{{article.urlToImage}}" style="width: 300px;height: 100px;object-fit: cover; border-radius: 5px;"></a>
+
+      </ion-col>
+      <ion-col size="8">
+
+        <ion-label>
+          <a href="{{article.url}}" style="all: unset">
+          {{article.title}}
+          <p>{{article.publishedAt | date}}</p>
+          <p style="font-weight: 200">{{article.author}}</p>
+          </a>
+          <ion-button (click) = "addData(article)">Add to favorites</ion-button>
+
+        </ion-label>
+
+      </ion-col>
+
+
+
+
+    </ion-row>
+
+  </ion-list>
+
+</ion-content>
+

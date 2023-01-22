@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Your favorite articles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list size ="8">
+    <ion-row *ngFor="let article of listData; let i = index;"
+             style="background-color: #d3d3d3; border-radius: 5px" class="ion-margin">
+
+      <ion-col size="4">
+        <a href="{{article.url}}"><img src="{{article.urlToImage}}" style="width: 300px;height: 100px;object-fit: cover; border-radius: 5px;"></a>
+
+      </ion-col>
+      <ion-col size="8">
+
+          <ion-label>
+            <a href="{{article.url}}" style="all: unset">
+            {{article.title}}
+            <p>{{article.publishedAt | date}}</p>
+            <p style="font-weight: 200">{{article.author}}</p>
+            </a>
+            <ion-button (click)="removeItem(i)">Remove from favorites</ion-button>
+
+          </ion-label>
+
+      </ion-col>
+
+
+
+
+    </ion-row>
+
+
+  </ion-list>
+</ion-content>
+
+
